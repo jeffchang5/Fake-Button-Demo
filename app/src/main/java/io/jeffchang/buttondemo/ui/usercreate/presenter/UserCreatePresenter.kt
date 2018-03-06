@@ -1,7 +1,11 @@
 package io.jeffchang.buttondemo.ui.usercreate.presenter
 
 /**
- * Created by jeffreychang on 3/2/18.
+ * Presenter contract for creating an user.
  */
 
-interface UserCreatePresenter
+interface UserCreatePresenter {
+
+    fun postUser(name: String, email: String)
+
+}

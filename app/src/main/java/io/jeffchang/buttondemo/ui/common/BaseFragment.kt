@@ -63,9 +63,12 @@ abstract class BaseFragment : DaggerFragment() {
         mainView?.visibility = View.VISIBLE
     }
 
-    fun showErrorView(error: Int, callback: () -> Unit) {
+    fun showErrorView(drawableInt: Int?, error: Int, callback: () -> Unit) {
         progressBarView?.visibility = View.GONE
         mainView?.visibility = View.GONE
+        errorView?.tryAgainCallback = callback
+        errorView?.titleText = error
+        errorView?.iconDrawable = drawableInt
         errorView?.visibility = View.VISIBLE
     }
 }

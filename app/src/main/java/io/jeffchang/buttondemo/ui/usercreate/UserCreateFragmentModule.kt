@@ -3,6 +3,8 @@ package io.jeffchang.buttondemo.ui.usercreate
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import io.jeffchang.buttondemo.network.remote.FakeButtonService
+import io.jeffchang.buttondemo.ui.usercreate.presenter.UserCreatePresenter
 import io.jeffchang.buttondemo.ui.usercreate.presenter.UserCreatePresenterImpl
 import io.jeffchang.buttondemo.ui.usercreate.view.UserCreateFragment
 import io.jeffchang.buttondemo.ui.usercreate.view.UserCreateView
@@ -21,6 +23,8 @@ abstract class UserCreateFragmentModule {
     companion object {
         @JvmStatic
         @Provides
-        fun provideUserCreatePresenter() = UserCreatePresenterImpl()
+        fun provideUserCreatePresenter(userCreateView: UserCreateView,
+                                       fakeButtonService: FakeButtonService): UserCreatePresenter
+                = UserCreatePresenterImpl(userCreateView, fakeButtonService)
     }
 }

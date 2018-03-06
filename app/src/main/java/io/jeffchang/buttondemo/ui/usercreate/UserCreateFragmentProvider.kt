@@ -12,5 +12,5 @@ import io.jeffchang.buttondemo.ui.usercreate.view.UserCreateFragment
 abstract class UserCreateFragmentProvider {
 
     @ContributesAndroidInjector(modules = [UserCreateFragmentModule::class])
-    internal abstract fun provideUserCreateFragment(): UserCreateFragment
+    abstract fun provideUserCreateFragment(): UserCreateFragment
 }

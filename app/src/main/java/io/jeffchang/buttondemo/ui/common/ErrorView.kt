@@ -17,11 +17,20 @@ import kotlinx.android.synthetic.main.view_error.view.*
  */
 class ErrorView(context: Context, attrs: AttributeSet?) : RelativeLayout(context, attrs) {
 
-    var iconDrawable: Int = R.drawable.ic_cloud_off_black_24dp
-        set(icon) = error_view_imageview_icon.setImageResource(icon)
+    var iconDrawable: Int? = R.drawable.ic_cloud_off_black_24dp
+        set(icon) {
+            icon?.let { error_view_imageview_icon.setImageResource(it) }
+        }
 
     var titleText: Int = R.string.device_offline
         set(title) = error_view_error_textview.setText(title)
+
+    var tryAgainCallback: (() -> Unit)? = null
+        set(callback) {
+            error_view_error_description_textview.setOnClickListener({
+                callback?.invoke()
+            })
+        }
 
     constructor(context: Context): this(context, null)
 
@@ -38,12 +47,7 @@ class ErrorView(context: Context, attrs: AttributeSet?) : RelativeLayout(context
             }
         }
 
-    var tryAgainCallback: (() -> Unit)? = null
-        set(callback) {
-            error_view_error_description_textview.setOnClickListener({
-                callback?.invoke()
-            })
-        }
+
 
     init {
         inflate(context, R.layout.view_error, this)

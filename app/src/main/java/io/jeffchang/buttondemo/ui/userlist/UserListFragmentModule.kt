@@ -24,8 +24,7 @@ abstract class UserListFragmentModule {
         @JvmStatic
         @Provides
         fun provideDogListPresenter(view: UserListView,
-                                    fakeButtonService: FakeButtonService): UserListPresenter {
-            return UserListPresenterImpl(view, fakeButtonService)
-        }
+                                    fakeButtonService: FakeButtonService): UserListPresenter =
+                UserListPresenterImpl(view, fakeButtonService)
     }
 }
