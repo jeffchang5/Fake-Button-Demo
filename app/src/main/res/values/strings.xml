@@ -1,6 +1,10 @@
 <resources>
+    <!--Common-->
     <string name="app_name">Button Demo</string>
     <string name="disconnected">Disconnected</string>
     <string name="device_offline">Device Offline</string>
     <string name="try_again">Try Again</string>
+
+    <!--User List Fragment-->
+    <string name="loading_users">Loading Users…</string>
 </resources>
