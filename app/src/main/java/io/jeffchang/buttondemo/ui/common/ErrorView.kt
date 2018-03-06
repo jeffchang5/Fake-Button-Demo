@@ -14,6 +14,10 @@ import kotlinx.android.synthetic.main.view_error.view.*
  * View that displays a screen when the user has lost connectivity.
  *
  * @property[tryAgainCallback] A callback to load to reattempt the network call.
+ *
+ * @property[titleText] Text to display to let user know of an error.
+ *
+ * @property[textColor] The color of the text.
  */
 class ErrorView(context: Context, attrs: AttributeSet?) : RelativeLayout(context, attrs) {
 
@@ -32,8 +36,6 @@ class ErrorView(context: Context, attrs: AttributeSet?) : RelativeLayout(context
             })
         }
 
-    constructor(context: Context): this(context, null)
-
     @ColorInt
     var textColor: Int? = null
         set(colorRes) {
@@ -47,7 +49,7 @@ class ErrorView(context: Context, attrs: AttributeSet?) : RelativeLayout(context
             }
         }
 
-
+    constructor(context: Context): this(context, null)
 
     init {
         inflate(context, R.layout.view_error, this)

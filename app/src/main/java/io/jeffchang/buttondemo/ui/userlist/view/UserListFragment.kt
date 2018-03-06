@@ -32,14 +32,18 @@ class UserListFragment : BaseFragment(), UserListView {
         super.onViewCreated(view, savedInstanceState)
         showProgressBar(getString(R.string.loading_users))
         userListPresenter.getUsers()
+        user_list_fragment_swipe_refresh.setOnRefreshListener {
+            userListPresenter.getUsers()
+        }
     }
 
     override fun onGetUsersSuccess(users: List<User>) {
+        user_list_fragment_swipe_refresh?.isRefreshing = false
         context?.let {
-            user_list_fragment_recycler_view.layoutManager = LinearLayoutManager(it)
-            user_list_fragment_recycler_view.addItemDecoration(LineItemDecoration(it))
+            user_list_fragment_recycler_view?.layoutManager = LinearLayoutManager(it)
+            user_list_fragment_recycler_view?.addItemDecoration(LineItemDecoration(it))
             userListRecyclerViewAdapter = UserListRecyclerViewAdapter(it, users)
-            user_list_fragment_recycler_view.adapter = userListRecyclerViewAdapter
+            user_list_fragment_recycler_view?.adapter = userListRecyclerViewAdapter
             showMainContent()
         }
     }
